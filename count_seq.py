@@ -7,31 +7,38 @@
 
 def count_seq():
     """
-    Initialize the sequence with the first two terms
+    Initializes the sequence with the first two terms
     """
     sequence = ['2', '12']
 
-    while True:
-        # Get the last term in the sequence
-        prev_term = sequence[-1]
+    # Yield the first two terms
+    yield sequence[0]
+    yield sequence[1]
 
+    while True:
         # Initialize variables to store the next term
         next_term = ''
+        current_digit = sequence[-1][0]
         count = 1
 
-        # Calculate the next term based on the previous term
-        for i in range(1, len(prev_term)):
-            if prev_term[i] == prev_term[i - 1]:
+        # Iterate through the digits of the previous term
+        for i in range(1, len(sequence[-1])):
+            if sequence[-1][i] == current_digit:
+                # If the current digit is the same as the previous one, increment count
                 count += 1
             else:
-                next_term += str(count) + prev_term[i - 1]
+                # Append the count and the previous digit to the next term
+                next_term += str(count) + current_digit
+
+                # Update variables for the next digit
+                current_digit = sequence[-1][i]
                 count = 1
 
-        # Add the last count and digit to the next term
-        next_term += str(count) + prev_term[-1]
+        # Append the count and the last digit to the next term
+        next_term += str(count) + current_digit
 
-        # Append the next term to the sequence
-        sequence.append(next_term)
-
-        # Yield the next term
+        # Yield the next term as a string
         yield next_term
+
+        # Append the next term to the sequence for the next iteration
+        sequence.append(next_term)
