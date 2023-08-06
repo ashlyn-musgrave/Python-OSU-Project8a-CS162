@@ -3,7 +3,7 @@
 # Date: 8/6/2023
 # Description: This program writes a generator function named count_seq that doesn't require
 # any arguments and generates a sequence that starts like this: 2, 12, 1112, 3112, 132112,
-# 1113122112, 311311222112, 13211321322112
+# 1113122112, 311311222112, 13211321322112.
 
 def count_seq():
     """
